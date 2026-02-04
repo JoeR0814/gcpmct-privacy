@@ -1,8 +1,6 @@
-// app/gcpmct-privacy/page.tsx
 'use client';
 
 import Image from 'next/image';
-import logo from '../../public/logo.png'; // make sure logo.png is in your public folder
 
 const PrivacyPage: React.FC = () => {
 	return (
@@ -11,6 +9,13 @@ const PrivacyPage: React.FC = () => {
 			<div className='flex justify-center mb-6'>
 				<Image
 					src='/gcpm-image.png'
+					alt='Gold Coast Property Maintenance LLC Logo'
+					width={300}
+					height={100}
+					className='object-contain'
+				/>
+				<Image
+					src='/truck-line-up.jpg'
 					alt='Gold Coast Property Maintenance LLC Logo'
 					width={300}
 					height={100}
@@ -30,6 +35,49 @@ const PrivacyPage: React.FC = () => {
 					OFFICE@gcpmct.com
 				</a>
 			</p>
+
+			<hr className='my-6' />
+
+			{/* Services */}
+			<h2 className='text-2xl font-semibold mb-3'>Our Services</h2>
+			<p className='mb-3'>
+				Gold Coast Property Maintenance LLC provides full-service property maintenance and
+				construction solutions, including but not limited to:
+			</p>
+			<Image
+				src='/sidewalk.webp'
+				alt='Gold Coast Property Maintenance LLC Logo'
+				width={300}
+				height={100}
+				className='object-contain'
+			/>
+
+			<ul className='list-disc list-inside mb-6'>
+				<li>Lawn mowing and routine lawn maintenance</li>
+				<li>Landscaping and property beautification</li>
+				<li>Mulching, planting, and flower bed maintenance</li>
+				<li>New lawn installations and lawn restoration</li>
+				<li>Concrete work including sidewalks, pads, and repairs</li>
+				<li>Excavation and site preparation</li>
+				<li>Seasonal cleanups (spring and fall)</li>
+				<li>Snow plowing, snow removal, and ice control</li>
+				<li>Salting services for commercial and residential properties</li>
+				<li>General property maintenance and custom projects</li>
+			</ul>
+			<Image
+				src='/patio.jpg'
+				alt='Gold Coast Property Maintenance LLC Logo'
+				width={300}
+				height={100}
+				className='object-contain'
+			/>
+			<Image
+				src='/shovel-deck.jpg'
+				alt='Gold Coast Property Maintenance LLC Logo'
+				width={300}
+				height={100}
+				className='object-contain'
+			/>
 
 			<hr className='my-6' />
 
@@ -56,9 +104,16 @@ const PrivacyPage: React.FC = () => {
 			<p>Your information is used only to:</p>
 			<ul className='list-disc list-inside mb-4'>
 				<li>Respond to customer inquiries</li>
-				<li>Schedule and coordinate landscaping and construction services</li>
-				<li>Provide service updates and customer support</li>
+				<li>Schedule and coordinate services</li>
+				<li>Provide job updates and customer support</li>
 			</ul>
+			<Image
+				src='/multch-bed.jpg'
+				alt='Gold Coast Property Maintenance LLC Logo'
+				width={300}
+				height={100}
+				className='object-contain'
+			/>
 
 			<h4 className='font-semibold mt-4 mb-1'>SMS Consent and Data Sharing</h4>
 			<p>
@@ -84,6 +139,13 @@ const PrivacyPage: React.FC = () => {
 					Office@gcpmct.com
 				</a>
 			</p>
+			<Image
+				src='/plowing.jpg'
+				alt='Gold Coast Property Maintenance LLC Logo'
+				width={300}
+				height={100}
+				className='object-contain'
+			/>
 
 			<hr className='my-6' />
 
@@ -92,14 +154,24 @@ const PrivacyPage: React.FC = () => {
 				By providing your phone number and communicating with Gold Coast Property Maintenance LLC by
 				text message, you agree to the following:
 			</p>
+			<Image
+				src='/flower-bed.jpg'
+				alt='Gold Coast Property Maintenance LLC Logo'
+				width={300}
+				height={100}
+				className='object-contain'
+			/>
 
 			<h4 className='font-semibold mt-4 mb-1'>Types of Messages</h4>
-			<p>We send text messages only for:</p>
 			<ul className='list-disc list-inside mb-4'>
 				<li>Customer service and support</li>
 				<li>Scheduling, job coordination, and service updates</li>
-				<li>Direct communication related to landscaping and construction services</li>
+				<li>
+					Direct communication related to landscaping, construction, and property maintenance
+					services
+				</li>
 			</ul>
+
 			<p>
 				<strong>We do not send promotional or marketing text messages.</strong>
 			</p>
@@ -114,8 +186,9 @@ const PrivacyPage: React.FC = () => {
 
 			<h4 className='font-semibold mt-4 mb-1'>Opt-Out</h4>
 			<p>
-				You may opt out of receiving SMS messages at any time by replying STOP. Once you opt out,
-				you will no longer receive text messages unless you contact us again.
+				You may opt out of receiving SMS messages at any time by replying STOP. After opting out,
+				you will receive a single confirmation message and will no longer receive text messages
+				unless you opt back in by replying START.
 			</p>
 
 			<h4 className='font-semibold mt-4 mb-1'>Privacy</h4>
@@ -125,13 +198,21 @@ const PrivacyPage: React.FC = () => {
 			</p>
 
 			<hr className='my-6' />
+			<Image
+				src='/baseball-field.jpg'
+				alt='Gold Coast Property Maintenance LLC Logo'
+				width={300}
+				height={100}
+				className='object-contain'
+			/>
 
 			<h3 className='text-xl font-semibold mt-4 mb-2'>Website SMS Consent Language</h3>
 			<p>If a contact form is used, the following consent language will be displayed:</p>
 			<p className='mb-6'>
 				☐ I consent to receive conversational and informational SMS messages from Gold Coast
-				Property Maintenance LLC related to landscaping and construction services. Reply STOP to opt
-				out; Reply HELP for support; Message and data rates may apply; Messaging frequency may vary.
+				Property Maintenance LLC related to landscaping, construction, and property maintenance
+				services. Reply STOP to opt out; Reply HELP for support; Message and data rates may apply;
+				Messaging frequency may vary.
 			</p>
 		</main>
 	);
