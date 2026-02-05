@@ -1,8 +1,35 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 
-const PrivacyPage: React.FC = () => {
+const HomePage: React.FC = () => {
+	const [formData, setFormData] = useState({
+		name: '',
+		company: '',
+		phone: '',
+		email: '',
+		subject: '',
+		message: '',
+		smsConsent: false,
+	});
+
+	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+		const { name, value, type } = e.target;
+		setFormData((prev) => ({
+			...prev,
+			[name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
+		}));
+	};
+
+	const handleSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+		// Handle form submission here - integrate with your backend/email service
+		console.log('Form submitted:', formData);
+		alert('Thank you for your message! We will contact you soon.');
+	};
+
 	return (
 		<main className='px-4 md:px-20 lg:px-40 py-10 bg-gray-50 text-gray-800'>
 			{/* Logo */}
@@ -40,10 +67,147 @@ const PrivacyPage: React.FC = () => {
 				/>
 			</div>
 
+			{/* Customer Contact Form */}
+			<section className='mb-10'>
+				<div className='max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg'>
+					<h2 className='text-2xl font-bold text-center mb-6'>Send us a message</h2>
+					<form onSubmit={handleSubmit} className='space-y-4'>
+						<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+							<div>
+								<label htmlFor='name' className='block text-sm font-medium text-gray-700 mb-1'>
+									Name
+								</label>
+								<input
+									type='text'
+									id='name'
+									name='name'
+									value={formData.name}
+									onChange={handleInputChange}
+									required
+									className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent'
+									placeholder='Name'
+								/>
+							</div>
+							<div>
+								<label htmlFor='company' className='block text-sm font-medium text-gray-700 mb-1'>
+									Company
+								</label>
+								<input
+									type='text'
+									id='company'
+									name='company'
+									value={formData.company}
+									onChange={handleInputChange}
+									className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent'
+									placeholder='Company'
+								/>
+							</div>
+						</div>
+
+						<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+							<div>
+								<label htmlFor='phone' className='block text-sm font-medium text-gray-700 mb-1'>
+									Phone
+								</label>
+								<input
+									type='tel'
+									id='phone'
+									name='phone'
+									value={formData.phone}
+									onChange={handleInputChange}
+									required
+									className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent'
+									placeholder='Phone'
+								/>
+							</div>
+							<div>
+								<label htmlFor='email' className='block text-sm font-medium text-gray-700 mb-1'>
+									Email
+								</label>
+								<input
+									type='email'
+									id='email'
+									name='email'
+									value={formData.email}
+									onChange={handleInputChange}
+									className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent'
+									placeholder='Email'
+								/>
+							</div>
+						</div>
+
+						<div>
+							<label htmlFor='subject' className='block text-sm font-medium text-gray-700 mb-1'>
+								Subject
+							</label>
+							<input
+								type='text'
+								id='subject'
+								name='subject'
+								value={formData.subject}
+								onChange={handleInputChange}
+								className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent'
+								placeholder='Subject'
+							/>
+						</div>
+
+						<div>
+							<label htmlFor='message' className='block text-sm font-medium text-gray-700 mb-1'>
+								Message
+							</label>
+							<textarea
+								id='message'
+								name='message'
+								value={formData.message}
+								onChange={handleInputChange}
+								rows={4}
+								className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent'
+								placeholder='Message'
+							/>
+						</div>
+
+						{/* SMS Consent Checkbox */}
+						<div className='bg-blue-50 p-4 rounded-lg border border-blue-200'>
+							<label className='flex items-start space-x-3'>
+								<input
+									type='checkbox'
+									name='smsConsent'
+									checked={formData.smsConsent}
+									onChange={handleInputChange}
+									className='mt-1 h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded'
+								/>
+								<span className='text-sm text-gray-700'>
+									By checking this box, I agree to receive Conversational SMS messages about
+									landscaping, construction, and property maintenance services from Gold Coast
+									Property Maintenance LLC at the phone number provided above. Message frequency may
+									vary. Data rates may apply. Text HELP for assistance. Reply STOP to opt out of
+									receiving SMS messages. Please review our{' '}
+									<Link href='/privacy-policy' className='text-blue-600 hover:underline'>
+										Privacy Policy
+									</Link>{' '}
+									and{' '}
+									<Link href='/terms-conditions' className='text-blue-600 hover:underline'>
+										Terms & Conditions
+									</Link>
+									.
+								</span>
+							</label>
+						</div>
+
+						<button
+							type='submit'
+							className='w-full bg-green-700 text-white py-3 px-4 rounded-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 font-medium'
+						>
+							SEND MESSAGE
+						</button>
+					</form>
+				</div>
+			</section>
+
 			{/* Services Section */}
 			<section className='mb-10'>
-				<h2 className='text-2xl font-semibold mb-4'>Our Services</h2>
-				<p className='mb-6 text-gray-700'>
+				<h2 className='text-2xl font-semibold mb-4 text-center'>Our Services</h2>
+				<p className='mb-6 text-gray-700 text-center max-w-3xl mx-auto'>
 					Gold Coast Property Maintenance LLC provides full-service property maintenance and
 					construction solutions, including:
 				</p>
@@ -116,7 +280,7 @@ const PrivacyPage: React.FC = () => {
 
 					<div className='bg-white rounded-lg shadow-md overflow-hidden'>
 						<Image
-							src='/shovel-deck.jpg'
+							src='/shovel-deck.JPG'
 							alt='New lawns and restoration'
 							width={400}
 							height={250}
@@ -148,112 +312,34 @@ const PrivacyPage: React.FC = () => {
 				</div>
 			</section>
 
-			{/* Privacy & SMS Section */}
+			{/* SMS Terms Summary */}
 			<section className='mb-10'>
-				<h2 className='text-2xl font-semibold mb-3'>Privacy Policy & SMS Terms</h2>
-				<p className='text-gray-600 mb-4'>
-					<strong>Effective Date:</strong> 01/30/26
-				</p>
-
-				<h3 className='text-xl font-semibold mt-4 mb-2'>Privacy Policy</h3>
-				<p className='text-gray-700 mb-4'>
-					Gold Coast Property Maintenance LLC (“we,” “us,” or “our”) values your privacy and is
-					committed to protecting your personal information.
-				</p>
-
-				<h4 className='font-semibold mt-4 mb-1'>Information We Collect</h4>
-				<ul className='list-disc list-inside mb-4 text-gray-600'>
-					<li>Name</li>
-					<li>Phone number</li>
-					<li>Email address (if provided)</li>
-					<li>Text message content and communication history</li>
-				</ul>
-
-				<h4 className='font-semibold mt-4 mb-1'>How We Use Your Information</h4>
-				<ul className='list-disc list-inside mb-4 text-gray-600'>
-					<li>Respond to customer inquiries</li>
-					<li>Schedule and coordinate services</li>
-					<li>Provide job updates and customer support</li>
-				</ul>
-
-				<h4 className='font-semibold mt-4 mb-1'>SMS Consent and Data Sharing</h4>
-				<p className='text-gray-600 mb-2'>
-					We do not sell, rent, or share mobile phone numbers or SMS consent with third parties or
-					affiliates for marketing or promotional purposes.
-				</p>
-				<p className='text-gray-600 mb-2'>
-					No mobile opt-in or text message consent will be shared with third parties or affiliates.
-				</p>
-
-				<h4 className='font-semibold mt-4 mb-1'>Data Protection</h4>
-				<p className='text-gray-600 mb-2'>
-					We take reasonable steps to protect your information from unauthorized access, misuse, or
-					disclosure.
-				</p>
-
-				<h4 className='font-semibold mt-4 mb-1'>Contact Information</h4>
-				<p className='text-gray-600 mb-6'>
-					📞 Phone: (203) 331-7117
-					<br />
-					📧 Email:{' '}
-					<a href='mailto:Office@gcpmct.com' className='text-blue-600 hover:underline'>
-						Office@gcpmct.com
-					</a>
-				</p>
-			</section>
-
-			{/* SMS Terms */}
-			<section className='mb-10 bg-white p-6 rounded-lg shadow-lg'>
-				<h3 className='text-xl font-semibold mb-4'>SMS Terms of Service</h3>
-
-				<ul className='list-disc list-inside mb-4 text-gray-700'>
-					<li>Customer service and support</li>
-					<li>Scheduling, job coordination, and service updates</li>
-					<li>
-						Direct communication related to landscaping, construction, and property maintenance
-						services
-					</li>
-				</ul>
-
-				<p className='text-gray-700 mb-4'>
-					<strong>We do not send promotional or marketing text messages.</strong>
-				</p>
-
-				<ul className='list-disc list-inside mb-4 text-gray-700'>
-					<li>Message frequency may vary</li>
-					<li>Message and data rates may apply</li>
-					<li>Reply STOP at any time to opt out</li>
-					<li>Reply HELP for assistance</li>
-				</ul>
-
-				<p className='text-gray-700 mb-4'>
-					You may opt out of receiving SMS messages at any time by replying STOP. After opting out,
-					you will receive a single confirmation message and will no longer receive text messages
-					unless you opt back in by replying START.
-				</p>
-
-				<p className='text-gray-700 mb-0'>
-					Your information is handled according to this Privacy Policy and is used only for
-					business-related communication.
-				</p>
-			</section>
-
-			{/* SMS Consent */}
-			<section className='mb-10'>
-				<h3 className='text-xl font-semibold mb-2'>Website SMS Consent Language</h3>
-				<p className='text-gray-700 mb-6'>
-					If a contact form is used, the following consent language will be displayed:
-				</p>
-				<p className='text-gray-700 bg-white p-4 rounded-lg shadow'>
-					☐ I consent to receive conversational and informational SMS messages from Gold Coast
-					Property Maintenance LLC related to landscaping, construction, and property maintenance
-					services. Reply STOP to opt out; Reply HELP for support; Message and data rates may apply;
-					Messaging frequency may vary.
-				</p>
+				<div className='max-w-4xl mx-auto bg-green-50 p-6 rounded-lg border border-green-200'>
+					<h3 className='text-xl font-semibold mb-4 text-center'>SMS Communication Terms</h3>
+					<div className='grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-700'>
+						<div>
+							<h4 className='font-semibold mb-2'>What you can expect:</h4>
+							<ul className='list-disc list-inside space-y-1'>
+								<li>Service appointment reminders</li>
+								<li>Weather-related schedule updates</li>
+								<li>Service completion notifications</li>
+								<li>Billing and payment reminders</li>
+							</ul>
+						</div>
+						<div>
+							<h4 className='font-semibold mb-2'>Important details:</h4>
+							<ul className='list-disc list-inside space-y-1'>
+								<li>Message frequency: 2-5 per week during active service</li>
+								<li>Standard messaging rates apply</li>
+								<li>Reply STOP to opt out anytime</li>
+								<li>Reply HELP for assistance</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</section>
 		</main>
 	);
 };
 
-export default PrivacyPage;
-
+export default HomePage;
