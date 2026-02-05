@@ -54,6 +54,7 @@ const HomePage: React.FC = () => {
 				<a href='mailto:OFFICE@gcpmct.com' className='text-blue-600 hover:underline'>
 					OFFICE@gcpmct.com
 				</a>
+				<p>476 Pepper St, Monroe, CT, 06468</p>
 			</p>
 
 			{/* Hero Image */}
@@ -343,3 +344,4 @@ const HomePage: React.FC = () => {
 };
 
 export default HomePage;
+
