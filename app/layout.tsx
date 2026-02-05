@@ -39,9 +39,9 @@ export default function RootLayout({
 							<Link href='/privacy-policy' className='hover:text-green-200'>
 								Privacy Policy
 							</Link>
-							<Link href='/terms-conditions' className='hover:text-green-200'>
+							{/* <Link href='/terms-conditions' className='hover:text-green-200'>
 								Terms & Conditions
-							</Link>
+							</Link> */}
 						</div>
 					</div>
 				</nav>
@@ -54,9 +54,9 @@ export default function RootLayout({
 								Privacy Policy
 							</Link>
 							<span>|</span>
-							<Link href='/terms-conditions' className='hover:text-gray-300'>
+							{/* <Link href='/terms-conditions' className='hover:text-gray-300'>
 								Terms & Conditions
-							</Link>
+							</Link> */}
 						</div>
 					</div>
 				</footer>
@@ -64,3 +64,4 @@ export default function RootLayout({
 		</html>
 	);
 }
+

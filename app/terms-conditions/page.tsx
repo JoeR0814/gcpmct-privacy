@@ -29,10 +29,6 @@ const TermsConditionsPage: React.FC = () => {
 						Maintenance LLC and your agreement to receive SMS communications from us. By using our
 						services or providing consent to receive SMS messages, you agree to these terms.
 					</p>
-					<p className='text-gray-700 mb-4 bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400'>
-						<strong>Note:</strong> This is a template. It is essential to customize these terms and
-						conditions to align with your specific business needs and legal requirements.
-					</p>
 				</section>
 
 				<section className='mb-8'>
